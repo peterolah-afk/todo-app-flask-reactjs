@@ -7,7 +7,7 @@ export const getTasksOnUserAPI = async () => {
   const token = useAuthStore.getState().token;
 
   const response = await axios.get<Task[]>(
-    "http://localhost:5000/api/v1/tasks/user",
+    "http://localhost:5001/api/v1/tasks/user",
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -24,7 +24,7 @@ export const createTaskAPI = async (data: {
 }) => {
   const { formData, token } = data;
 
-  await axios.post("http://localhost:5000/api/v1/tasks", formData, {
+  await axios.post("http://localhost:5001/api/v1/tasks", formData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -38,7 +38,7 @@ export const updateTaskAPI = async (data: {
 }) => {
   const { formData, token, taskId } = data;
 
-  await axios.put(`http://localhost:5000/api/v1/tasks/${taskId}`, formData, {
+  await axios.put(`http://localhost:5001/api/v1/tasks/${taskId}`, formData, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -51,7 +51,7 @@ export const deleteTaskAPI = async (data: {
 }) => {
   const { token, taskId } = data;
 
-  await axios.delete(`http://localhost:5000/api/v1/tasks/${taskId}`, {
+  await axios.delete(`http://localhost:5001/api/v1/tasks/${taskId}`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },
