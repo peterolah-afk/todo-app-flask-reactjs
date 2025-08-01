@@ -42,6 +42,7 @@ class TaskController:
 
             db.session.add(new_task)
             db.session.commit()
+            return new_task
         except SQLAlchemyError:
             db.session.rollback()
             abort(500, message="Internal server error while creating task")
@@ -59,6 +60,7 @@ class TaskController:
 
             db.session.add(task)
             db.session.commit()
+            return task
         except NoResultFound:
             abort(404, message="Task not found")
         except SQLAlchemyError:
@@ -74,6 +76,7 @@ class TaskController:
 
             db.session.delete(task)
             db.session.commit()
+            return {"message": "Task deleted successfully"}
         except NoResultFound:
             abort(404, message="Task not found")
         except SQLAlchemyError:

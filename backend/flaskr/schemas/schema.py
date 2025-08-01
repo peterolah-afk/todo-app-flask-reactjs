@@ -25,4 +25,4 @@ class TaskSchema(PlainTaskSchema):
 
 
 class UpdateTaskSchema(PlainTaskSchema):
-    pass
+    tag_id = fields.Int(required=True, load_only=True, data_key="tagId")

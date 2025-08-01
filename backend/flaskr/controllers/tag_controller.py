@@ -27,6 +27,7 @@ class TagController:
 
             db.session.add(new_tag)
             db.session.commit()
+            return new_tag
         except SQLAlchemyError:
             db.session.rollback()
             abort(500, message="Internal server error while creating tag")

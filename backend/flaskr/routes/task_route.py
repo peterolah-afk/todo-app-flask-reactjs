@@ -11,7 +11,7 @@ bp = Blueprint("tasks", __name__)
 class Tasks(MethodView):
     @jwt_required()
     @bp.arguments(TaskSchema)
-    @bp.response(201)
+    @bp.response(201, TaskSchema)
     def post(self, data):
         """Protected route (JWT Required)"""
         return TaskController.create(data)
@@ -30,7 +30,7 @@ class TasksOnUser(MethodView):
 class TaskById(MethodView):
     @jwt_required()
     @bp.arguments(UpdateTaskSchema)
-    @bp.response(200)
+    @bp.response(200, TaskSchema)
     def put(self, data, task_id):
         """Protected route (JWT Required)"""
         return TaskController.update(data, task_id)

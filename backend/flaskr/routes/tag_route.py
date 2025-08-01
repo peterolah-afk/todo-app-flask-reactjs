@@ -13,6 +13,6 @@ class Tags(MethodView):
         return TagController.get_all()
 
     @bp.arguments(TagSchema)
-    @bp.response(201)
+    @bp.response(201, TagSchema)
     def post(self, data):
         return TagController.create(data)
